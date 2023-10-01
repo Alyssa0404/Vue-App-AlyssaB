@@ -1,30 +1,45 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+import {ref} from 'vue';
 
+      const inputText = ref("....")
+      const selectedNationality = ref("us")
+</script>
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+   <h1>Let me know your nationality!</h1>
+    <label for="inputText">Enter your name:</label>
+    <input type="text" id="inputText" v-model="inputText" />
+    <label for="nationality">Select your nationality:</label>
+    <select id="nationality" v-model="selectedNationality">
+      <option value="us">United States</option>
+      <option value="fr">France</option>
+      <option value="jp">Japan</option>
+      <option value="cn">China</option>
+      <option value="kr">South Korea</option>
+    </select>
+
+   
+    <div v-if="selectedNationality === 'us'">
+      <h2>Welcome, {{ inputText }}!</h2>
+    </div>
+    <div v-else-if="selectedNationality === 'fr'">
+      <h2>Bonjour, {{ inputText }}!</h2>
+    </div>
+    <div v-else-if="selectedNationality === 'jp'">
+      <h2>こんにちは、{{ inputText }}さん！</h2>
+    </div>
+    <div v-else-if="selectedNationality === 'cn'">
+      <h2>你好，{{ inputText }}！</h2>
+    </div>
+     <div v-else-if="selectedNationality === 'kr'">
+      <h2>Anyeonghaseyo，{{ inputText }}！</h2>
+    </div>
+    <div v-else>
+      <h2>Hello, {{ inputText }}!</h2>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+
+    
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+
