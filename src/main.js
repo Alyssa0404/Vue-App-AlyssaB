@@ -5,3 +5,4 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/index.umd.js'
 
 createApp(App).mount('#app')
+
